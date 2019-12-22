@@ -1,0 +1,474 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		15BF1DD823AC7F00007A083B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF1DD723AC7F00007A083B /* AppDelegate.swift */; };
+		15BF1DDA23AC7F00007A083B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF1DD923AC7F00007A083B /* SceneDelegate.swift */; };
+		15BF1DDC23AC7F00007A083B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF1DDB23AC7F00007A083B /* ViewController.swift */; };
+		15BF1DDF23AC7F00007A083B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15BF1DDD23AC7F00007A083B /* Main.storyboard */; };
+		15BF1DE223AC7F00007A083B /* SwiftSell.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15BF1DE023AC7F00007A083B /* SwiftSell.xcdatamodeld */; };
+		15BF1DE423AC7F05007A083B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15BF1DE323AC7F05007A083B /* Assets.xcassets */; };
+		15BF1DE723AC7F05007A083B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15BF1DE523AC7F05007A083B /* LaunchScreen.storyboard */; };
+		15DFDFE423AC9E3C0086FA26 /* Seller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DFDFE323AC9E3C0086FA26 /* Seller.swift */; };
+		15DFDFE723ACA13A0086FA26 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DFDFE623ACA13A0086FA26 /* NetworkManager.swift */; };
+		15DFDFEA23ACBFFD0086FA26 /* HeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DFDFE923ACBFFD0086FA26 /* HeaderViewController.swift */; };
+		15DFDFEC23ACFAF30086FA26 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DFDFEB23ACFAF30086FA26 /* UIColorExtension.swift */; };
+		39A1FFF7284343EEC3A2B0A2 /* Pods_SwiftSell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABDEC17954D7228EF718B03 /* Pods_SwiftSell.framework */; };
+		6B6E46B623AF919900C64C2E /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6E46B523AF919900C64C2E /* PopoverViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		15BF1DD423AC7F00007A083B /* SwiftSell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSell.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		15BF1DD723AC7F00007A083B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		15BF1DD923AC7F00007A083B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		15BF1DDB23AC7F00007A083B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		15BF1DDE23AC7F00007A083B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		15BF1DE123AC7F00007A083B /* SwiftSell.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftSell.xcdatamodel; sourceTree = "<group>"; };
+		15BF1DE323AC7F05007A083B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		15BF1DE623AC7F05007A083B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		15BF1DE823AC7F05007A083B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15DFDFE323AC9E3C0086FA26 /* Seller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seller.swift; sourceTree = "<group>"; };
+		15DFDFE623ACA13A0086FA26 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		15DFDFE923ACBFFD0086FA26 /* HeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewController.swift; sourceTree = "<group>"; };
+		15DFDFEB23ACFAF30086FA26 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		4318A2659CCB53BB92A94C76 /* Pods-SwiftSell.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftSell.debug.xcconfig"; path = "Target Support Files/Pods-SwiftSell/Pods-SwiftSell.debug.xcconfig"; sourceTree = "<group>"; };
+		4ABDEC17954D7228EF718B03 /* Pods_SwiftSell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftSell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B6E46B523AF919900C64C2E /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		D5432F8D77F6953E8DC5DF2F /* Pods-SwiftSell.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftSell.release.xcconfig"; path = "Target Support Files/Pods-SwiftSell/Pods-SwiftSell.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		15BF1DD123AC7F00007A083B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39A1FFF7284343EEC3A2B0A2 /* Pods_SwiftSell.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		15BF1DCB23AC7F00007A083B = {
+			isa = PBXGroup;
+			children = (
+				15BF1DD623AC7F00007A083B /* SwiftSell */,
+				15BF1DD523AC7F00007A083B /* Products */,
+				34AF9B42DBC922B1F16478B3 /* Pods */,
+				8033DA0A290295E9ED84D187 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		15BF1DD523AC7F00007A083B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				15BF1DD423AC7F00007A083B /* SwiftSell.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		15BF1DD623AC7F00007A083B /* SwiftSell */ = {
+			isa = PBXGroup;
+			children = (
+				15BF1DD723AC7F00007A083B /* AppDelegate.swift */,
+				15BF1DD923AC7F00007A083B /* SceneDelegate.swift */,
+				15BF1DDB23AC7F00007A083B /* ViewController.swift */,
+				15DFDFE823ACA1440086FA26 /* Util */,
+				15DFDFE523AC9E3F0086FA26 /* Model */,
+				15DFDFE223AC9B1E0086FA26 /* Components */,
+				15BF1DDD23AC7F00007A083B /* Main.storyboard */,
+				15BF1DE323AC7F05007A083B /* Assets.xcassets */,
+				15BF1DE523AC7F05007A083B /* LaunchScreen.storyboard */,
+				15BF1DE823AC7F05007A083B /* Info.plist */,
+				15BF1DE023AC7F00007A083B /* SwiftSell.xcdatamodeld */,
+			);
+			path = SwiftSell;
+			sourceTree = "<group>";
+		};
+		15DFDFE223AC9B1E0086FA26 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				15DFDFE923ACBFFD0086FA26 /* HeaderViewController.swift */,
+				6B6E46B523AF919900C64C2E /* PopoverViewController.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		15DFDFE523AC9E3F0086FA26 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				15DFDFE323AC9E3C0086FA26 /* Seller.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		15DFDFE823ACA1440086FA26 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				15DFDFE623ACA13A0086FA26 /* NetworkManager.swift */,
+				15DFDFEB23ACFAF30086FA26 /* UIColorExtension.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		34AF9B42DBC922B1F16478B3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4318A2659CCB53BB92A94C76 /* Pods-SwiftSell.debug.xcconfig */,
+				D5432F8D77F6953E8DC5DF2F /* Pods-SwiftSell.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8033DA0A290295E9ED84D187 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4ABDEC17954D7228EF718B03 /* Pods_SwiftSell.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		15BF1DD323AC7F00007A083B /* SwiftSell */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15BF1DEB23AC7F05007A083B /* Build configuration list for PBXNativeTarget "SwiftSell" */;
+			buildPhases = (
+				BFB073890E208ABAF95E64AF /* [CP] Check Pods Manifest.lock */,
+				15BF1DD023AC7F00007A083B /* Sources */,
+				15BF1DD123AC7F00007A083B /* Frameworks */,
+				15BF1DD223AC7F00007A083B /* Resources */,
+				19FD1C8C6DA77BCA053F75D0 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftSell;
+			productName = SwiftSell;
+			productReference = 15BF1DD423AC7F00007A083B /* SwiftSell.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		15BF1DCC23AC7F00007A083B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = "沈翔";
+				TargetAttributes = {
+					15BF1DD323AC7F00007A083B = {
+						CreatedOnToolsVersion = 11.0;
+					};
+				};
+			};
+			buildConfigurationList = 15BF1DCF23AC7F00007A083B /* Build configuration list for PBXProject "SwiftSell" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 15BF1DCB23AC7F00007A083B;
+			productRefGroup = 15BF1DD523AC7F00007A083B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				15BF1DD323AC7F00007A083B /* SwiftSell */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		15BF1DD223AC7F00007A083B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15BF1DE723AC7F05007A083B /* LaunchScreen.storyboard in Resources */,
+				15BF1DE423AC7F05007A083B /* Assets.xcassets in Resources */,
+				15BF1DDF23AC7F00007A083B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		19FD1C8C6DA77BCA053F75D0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftSell/Pods-SwiftSell-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftSell/Pods-SwiftSell-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftSell/Pods-SwiftSell-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFB073890E208ABAF95E64AF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwiftSell-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		15BF1DD023AC7F00007A083B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15DFDFE423AC9E3C0086FA26 /* Seller.swift in Sources */,
+				15BF1DDC23AC7F00007A083B /* ViewController.swift in Sources */,
+				15DFDFE723ACA13A0086FA26 /* NetworkManager.swift in Sources */,
+				15DFDFEC23ACFAF30086FA26 /* UIColorExtension.swift in Sources */,
+				15BF1DD823AC7F00007A083B /* AppDelegate.swift in Sources */,
+				15BF1DDA23AC7F00007A083B /* SceneDelegate.swift in Sources */,
+				15BF1DE223AC7F00007A083B /* SwiftSell.xcdatamodeld in Sources */,
+				6B6E46B623AF919900C64C2E /* PopoverViewController.swift in Sources */,
+				15DFDFEA23ACBFFD0086FA26 /* HeaderViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		15BF1DDD23AC7F00007A083B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				15BF1DDE23AC7F00007A083B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		15BF1DE523AC7F05007A083B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				15BF1DE623AC7F05007A083B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		15BF1DE923AC7F05007A083B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		15BF1DEA23AC7F05007A083B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		15BF1DEC23AC7F05007A083B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4318A2659CCB53BB92A94C76 /* Pods-SwiftSell.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5MWQNTQR5M;
+				INFOPLIST_FILE = SwiftSell/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.4s.SwiftSell;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		15BF1DED23AC7F05007A083B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5432F8D77F6953E8DC5DF2F /* Pods-SwiftSell.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5MWQNTQR5M;
+				INFOPLIST_FILE = SwiftSell/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.4s.SwiftSell;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		15BF1DCF23AC7F00007A083B /* Build configuration list for PBXProject "SwiftSell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15BF1DE923AC7F05007A083B /* Debug */,
+				15BF1DEA23AC7F05007A083B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		15BF1DEB23AC7F05007A083B /* Build configuration list for PBXNativeTarget "SwiftSell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15BF1DEC23AC7F05007A083B /* Debug */,
+				15BF1DED23AC7F05007A083B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		15BF1DE023AC7F00007A083B /* SwiftSell.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				15BF1DE123AC7F00007A083B /* SwiftSell.xcdatamodel */,
+			);
+			currentVersion = 15BF1DE123AC7F00007A083B /* SwiftSell.xcdatamodel */;
+			path = SwiftSell.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 15BF1DCC23AC7F00007A083B /* Project object */;
+}
