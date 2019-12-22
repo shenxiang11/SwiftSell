@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class HeaderViewController: UIViewController {
+class HeaderView: UIView {
     
     var seller: Seller? {
         didSet {
@@ -34,9 +34,8 @@ class HeaderViewController: UIViewController {
     
     private var descriptionLabel: UILabel!
         
-    init(seller: Seller) {
-        super.init()
-        self.seller = seller
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
     
     required init?(coder: NSCoder) {
@@ -48,13 +47,13 @@ class HeaderViewController: UIViewController {
     }
 }
 
-extension HeaderViewController {
+extension HeaderView {
     private func setupBgView(avatar: String) {
         bgView = UIImageView(frame: self.bounds)
         bgView.contentMode = .redraw
         let blurEffect = UIBlurEffect(style: .regular)
         let blurView = UIVisualEffectView(effect: blurEffect)
-        blurView.frame = self.view.bounds
+        blurView.frame = self.bounds
         self.bgView.kf.setImage(with: URL(string: avatar))
         self.addSubview(bgView)
         bgView.addSubview(blurView)

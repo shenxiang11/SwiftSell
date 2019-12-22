@@ -65,6 +65,7 @@ extension ViewController {
 
             self.headerView.seller = Seller(name: seller["name"].stringValue, sellerDescription:
                 seller["description"].stringValue, deliveryTime: seller["deliveryTime"].intValue, score: seller["score"].doubleValue, serviceScore: seller["serviceScore"].doubleValue, foodScore: seller["foodScore"].doubleValue, rankRate: seller["rankRate"].doubleValue, minPrice: seller["minPrice"].doubleValue, deliveryPrice: seller["deliveryPrice"].doubleValue, ratingCount: seller["ratingCount"].intValue, sellCount: seller["sellCount"].intValue, bulletin: seller["bulletin"].stringValue, supports: supports, avatar: seller["avatar"].stringValue, pics: pics, infos: infos)
+            
         }
     }
 }
