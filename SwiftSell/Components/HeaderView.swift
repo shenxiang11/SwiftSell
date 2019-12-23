@@ -26,6 +26,8 @@ class HeaderView: UIView {
         }
     }
     
+    private var parentController: UIViewController
+    
     private var bgView: UIImageView!
     
     private var mainImageView: UIImageView!
@@ -34,7 +36,8 @@ class HeaderView: UIView {
     
     private var descriptionLabel: UILabel!
         
-    override init(frame: CGRect) {
+    init(frame: CGRect, parentController: UIViewController) {
+        self.parentController = parentController
         super.init(frame: frame)
     }
     
@@ -43,7 +46,20 @@ class HeaderView: UIView {
     }
     
     @objc func showPopup() {
-        print("showPopover")
+        let popup = PopoverViewController(seller: seller!)
+        popup.modalPresentationStyle = .overFullScreen
+        popup.transitioningDelegate = self
+        parentController.navigationController?.present(popup, animated: true, completion: nil)
+    }
+}
+
+extension HeaderView: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return PopupAnimator(true)
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return PopupAnimator(false)
     }
 }
 
