@@ -91,3 +91,23 @@ class Tab: UIView {
         }
     }
 }
+
+extension Tab {
+    func setActive(sourceIndex: Int, targetIndex: Int, progress: CGFloat) {
+        let sourceLabel = itemButtons[sourceIndex]
+        let targetLabel = itemButtons[targetIndex]
+        
+        let moveTotalX = targetLabel.frame.origin.x - sourceLabel.frame.origin.x
+        let moveX = moveTotalX * progress
+        indicatorView.frame.origin.x = sourceLabel.frame.origin.x + moveX
+        
+        if (progress == 1) {
+            // sourceIndex 算的有短问题，通过遍历来取消选中
+            itemButtons.forEach { (button) in
+                button.isSelected = false
+            }
+            targetLabel.isSelected = true
+            selectedItemButton = targetLabel
+        }
+    }
+}

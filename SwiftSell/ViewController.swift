@@ -17,11 +17,6 @@ class ViewController: UIViewController {
     private lazy var shopCartView = ShopCartView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 56 + 30))
     private lazy var tab = Tab(items: ["商品", "评论", "商家"])
     
-    var vc1: UIViewController = {
-        let vc = UIViewController()
-        vc.view.backgroundColor = UIColor.red
-        return vc
-    }()
     var vc2: UIViewController = {
         let vc = UIViewController()
         vc.view.backgroundColor = UIColor.green
@@ -32,7 +27,8 @@ class ViewController: UIViewController {
         vc.view.backgroundColor = UIColor.blue
         return vc
     }()
-    private lazy var tabContent = TabContent(childVCs: [vc1, vc2, vc3], parentVC: self)
+    
+    private lazy var tabContent = TabContent(childVCs: [GoodsViewController(), vc2, vc3], parentVC: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +67,7 @@ extension ViewController {
     
     private func setupTabContent() {
         view.addSubview(tabContent)
+        tabContent.delegate = self
         tabContent.snp.makeConstraints { (make) in
             make.top.equalTo(tab.snp.bottom)
             make.bottom.equalTo(shopCartView.snp.top)
@@ -121,6 +118,12 @@ extension ViewController {
 
 extension ViewController: TabDelegate {
     func tab(_ tab: Tab, selectedIndex: Int) {
-        print(selectedIndex)
+        tabContent.scrollTo(index: selectedIndex)
+    }
+}
+
+extension ViewController: TabContentDelegate {
+    func tabContent(_ tabContent: TabContent, sourceIndex: Int, targetIndex: Int, progress: CGFloat) {
+        tab.setActive(sourceIndex: sourceIndex, targetIndex: targetIndex, progress: progress)
     }
 }

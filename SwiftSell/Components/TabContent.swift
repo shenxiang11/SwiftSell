@@ -8,11 +8,21 @@
 
 import UIKit
 
+protocol TabContentDelegate: class {
+    func tabContent(_ tabContent: TabContent, sourceIndex: Int, targetIndex: Int, progress: CGFloat)
+}
+
 class TabContent: UIView {
     static let CONTENT_ID = "ContentID"
     
     private var childVCs: [UIViewController] = []
     private var parentVC: UIViewController
+    weak var delegate: TabContentDelegate?
+    
+    private var progress: CGFloat = 0
+    private var sourceIndex = 0
+    private var targetIndex = 0
+    private var startOffsetX: CGFloat = 0
     
     lazy var collectionView: UICollectionView = {[weak self] in
         let flowLayout = UICollectionViewFlowLayout()
@@ -61,8 +71,45 @@ class TabContent: UIView {
 }
 
 extension TabContent: UICollectionViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        startOffsetX = scrollView.contentOffset.x
+    }
+        
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.x)
+        let currentOffsetX = scrollView.contentOffset.x
+        let scrollViewWidth = scrollView.bounds.width
+    
+        if currentOffsetX > startOffsetX {
+            progress = currentOffsetX / scrollViewWidth - floor(currentOffsetX / scrollViewWidth)
+            sourceIndex = Int(currentOffsetX / scrollViewWidth)
+            targetIndex = sourceIndex + 1
+            
+            if targetIndex >= childVCs.count {
+                targetIndex = childVCs.count - 1
+            }
+            
+            if currentOffsetX - startOffsetX == scrollViewWidth {
+                progress = 1
+                targetIndex = sourceIndex
+            }
+        } else {
+            progress = 1 - (currentOffsetX / scrollViewWidth - floor(currentOffsetX / scrollViewWidth))
+            
+            targetIndex = Int(currentOffsetX / scrollViewWidth)
+            
+            sourceIndex = targetIndex + 1
+            if sourceIndex >= childVCs.count {
+                sourceIndex = childVCs.count - 1
+            }
+        }
+        delegate?.tabContent(self, sourceIndex: sourceIndex, targetIndex: targetIndex, progress: progress)
+    }
+}
+
+extension TabContent {
+    func scrollTo(index: Int) {
+        let offset = CGPoint(x: CGFloat(index) * bounds.width, y: 0)
+        collectionView.setContentOffset(offset, animated: true)
     }
 }
 
