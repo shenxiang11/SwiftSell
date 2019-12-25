@@ -85,6 +85,10 @@ extension ViewController {
     }
     
     private func fetchData() {
+        fetchSeller()
+    }
+    
+    private func fetchSeller() {
         NetworkManager.requestData(.get, URLString: "http://ustbhuangyi.com/sell/api/seller") { (data) in
             let seller = JSON(data)
             let supports: [Support] = {

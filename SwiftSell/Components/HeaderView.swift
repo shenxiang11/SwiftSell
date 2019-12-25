@@ -14,7 +14,6 @@ class HeaderView: UIView {
     
     var seller: Seller? {
         didSet {
-            print(seller ?? "")
             if (seller != nil) {
                 setupBgView(avatar: seller!.avatar)
                 setupMainImageView(avatar: seller!.avatar)
