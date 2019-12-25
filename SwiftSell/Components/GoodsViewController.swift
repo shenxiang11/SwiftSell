@@ -74,7 +74,21 @@ extension GoodsViewController {
 }
 
 extension GoodsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (tableView.isEqual(typeTab)) {
+            goodsTable.scrollToRow(at: IndexPath(item: 0, section: indexPath.item), at: .top, animated: true)
+        }
+    }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let scrollView = scrollView as? UITableView, goodsTable.isEqual(scrollView) else {
+            return
+        }
+        guard let cell = scrollView.visibleCells.first else {
+            return
+        }
+        typeTab.selectRow(at: IndexPath(row: cell.tag, section: 0), animated: true, scrollPosition: .top)
+    }
 }
 
 extension GoodsViewController: UITableViewDataSource {
@@ -136,7 +150,8 @@ extension GoodsViewController: UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: GoodsViewController.TABLE_CELL_ID2, for: indexPath)
-            cell.textLabel?.text = "???"
+            cell.tag = indexPath.section
+            cell.textLabel?.text = "\(indexPath)"
             return cell
         }
     }
