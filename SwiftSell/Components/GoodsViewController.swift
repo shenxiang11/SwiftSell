@@ -12,11 +12,13 @@ import SwiftyJSON
 class GoodsViewController: UIViewController {
     
     static let TABLE_CELL_ID = "TABLE_CELL_ID"
+    static let TABLE_CELL_ID2 = "TABLE_CELL_ID2"
     
     private var goodsTypes: JSON = [] {
         didSet {
             print(goodsTypes)
             typeTab.reloadData()
+            goodsTable.reloadData()
             typeTab.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
         }
     }
@@ -26,10 +28,17 @@ class GoodsViewController: UIViewController {
         table.backgroundColor = UIColor(r: 243, g: 245, b: 247)
         table.delegate = self
         table.dataSource = self
-        table.tableFooterView = UIView(frame: .zero)
-        table.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         table.separatorColor = UIColor(r: 255, g: 255, b: 255, a: 0)
         table.register(TypeTabItem.self, forCellReuseIdentifier: GoodsViewController.TABLE_CELL_ID)
+        return table
+    }()
+    
+    lazy var goodsTable: UITableView = {[weak self] in
+        let table = UITableView()
+        table.backgroundColor = UIColor(r: 255, g: 255, b: 255)
+        table.delegate = self
+        table.dataSource = self
+        table.register(UITableViewCell.self, forCellReuseIdentifier: GoodsViewController.TABLE_CELL_ID2)
         return table
     }()
     
@@ -44,6 +53,7 @@ extension GoodsViewController {
     private func setupUI() {
         self.view.backgroundColor = UIColor.white
         setupTypeTab()
+        setupGoodsTable()
     }
     
     private func setupTypeTab() {
@@ -53,6 +63,14 @@ extension GoodsViewController {
             make.width.equalTo(80)
         }
     }
+    
+    private func setupGoodsTable() {
+        self.view.addSubview(goodsTable)
+        goodsTable.snp.makeConstraints { (make) in
+            make.left.equalTo(typeTab.snp.right)
+            make.right.top.bottom.equalToSuperview()
+        }
+    }
 }
 
 extension GoodsViewController: UITableViewDelegate {
@@ -60,20 +78,75 @@ extension GoodsViewController: UITableViewDelegate {
 }
 
 extension GoodsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if (tableView.isEqual(goodsTable)) {
+            let view = UIView()
+            let label = UILabel()
+            let leftBorder = UIView(frame: .zero)
+            leftBorder.backgroundColor = UIColor(r: 217, g: 221, b: 225)
+            label.text = goodsTypes[section]["name"].stringValue
+            label.font = UIFont.systemFont(ofSize: 12)
+            label.textColor = UIColor(r: 102, g: 102, b: 102)
+            view.backgroundColor = UIColor(r: 243, g: 245, b: 247)
+            view.addSubview(leftBorder)
+            view.addSubview(label)
+            leftBorder.snp.makeConstraints { (make) in
+                make.left.top.bottom.equalToSuperview()
+                make.width.equalTo(2)
+            }
+            label.snp.makeConstraints { (make) in
+                make.height.equalToSuperview()
+                make.left.equalTo(leftBorder.snp.right).offset(14)
+            }
+            return view
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if (tableView.isEqual(goodsTable)) {
+            return 26
+        } else {
+            return 0
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if (tableView.isEqual(typeTab)) {
+            return 1
+        } else {
+            return goodsTypes.count
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return goodsTypes.count
+        if (tableView.isEqual(typeTab)) {
+            return goodsTypes.count
+        } else {
+            return goodsTypes[section]["foods"].count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: GoodsViewController.TABLE_CELL_ID, for: indexPath) as! TypeTabItem
-        let goodsType = goodsTypes[indexPath.item]
-        cell.name = goodsType["name"].stringValue
-        cell.type = goodsType["type"].intValue
-        return cell
+        if (tableView.isEqual(typeTab)) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: GoodsViewController.TABLE_CELL_ID, for: indexPath) as! TypeTabItem
+            let goodsType = goodsTypes[indexPath.item]
+            cell.name = goodsType["name"].stringValue
+            cell.type = goodsType["type"].intValue
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: GoodsViewController.TABLE_CELL_ID2, for: indexPath)
+            cell.textLabel?.text = "???"
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 56.0
+        if (tableView.isEqual(typeTab)) {
+            return 56.0
+        } else {
+            return 100.0
+        }
     }
 }
 
