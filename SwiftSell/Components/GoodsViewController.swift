@@ -14,6 +14,8 @@ class GoodsViewController: UIViewController {
     static let TABLE_CELL_ID = "TABLE_CELL_ID"
     static let TABLE_CELL_ID2 = "TABLE_CELL_ID2"
     
+    private var flag: Bool = false
+    
     private var goodsTypes: JSON = [] {
         didSet {
             typeTab.reloadData()
@@ -75,20 +77,31 @@ extension GoodsViewController {
 extension GoodsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (tableView.isEqual(typeTab)) {
+            flag = true
             goodsTable.scrollToRow(at: IndexPath(item: 0, section: indexPath.item), at: .top, animated: true)
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }
     
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let scrollView = scrollView as? UITableView, goodsTable.isEqual(scrollView) else {
             return
         }
         guard let cell = scrollView.visibleCells.first else {
             return
         }
-        typeTab.selectRow(at: IndexPath(row: cell.tag, section: 0), animated: true, scrollPosition: .top)
+        if (flag != true) {
+            typeTab.selectRow(at: IndexPath(row: cell.tag, section: 0), animated: true, scrollPosition: .top)
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        flag = false
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        flag = false
     }
 }
 
