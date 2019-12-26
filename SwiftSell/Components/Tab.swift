@@ -80,15 +80,6 @@ class Tab: UIView {
         selectedItemButton.isSelected = false
         sender.isSelected = true
         selectedItemButton = sender
-        self.indicatorView.snp.remakeConstraints { (make) in
-            make.centerX.equalTo(self.selectedItemButton)
-            make.bottom.equalToSuperview()
-            make.width.equalToSuperview().dividedBy(items.count)
-            make.height.equalTo(2)
-        }
-        UIView.animate(withDuration: 0.25) {
-            self.layoutIfNeeded()
-        }
     }
 }
 
