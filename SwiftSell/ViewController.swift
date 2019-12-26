@@ -10,11 +10,9 @@ import UIKit
 import SnapKit
 import SwiftyJSON
 
-let kScreenWidth = UIScreen.main.bounds.width
-
 class ViewController: UIViewController {
-    private lazy var headerView = HeaderView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 136 + 44), parentController: self)
-    private lazy var shopCartView = ShopCartView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 56 + 30))
+    private lazy var headerView = HeaderView(parentController: self)
+    private lazy var shopCartView = ShopCartView()
     private lazy var tab = Tab(items: ["商品", "评论", "商家"])
     
     var vc2: UIViewController = {
@@ -51,7 +49,7 @@ extension ViewController {
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.top.equalToSuperview()
-            make.height.equalTo(136 + 44)
+            make.height.equalTo(136 + UIApplication.shared.keyWindow!.safeAreaInsets.top)
         }
     }
     
@@ -66,7 +64,7 @@ extension ViewController {
     }
     
     private func setupTabContent() {
-        view.addSubview(tabContent)
+        view.insertSubview(tabContent, belowSubview: shopCartView)
         tabContent.tabContentDelegate = self
         tabContent.snp.makeConstraints { (make) in
             make.top.equalTo(tab.snp.bottom)
@@ -80,7 +78,7 @@ extension ViewController {
         shopCartView.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview()
             make.width.equalToSuperview()
-            make.height.equalTo(56 + 30)
+            make.height.equalTo(56 + UIApplication.shared.keyWindow!.safeAreaInsets.bottom)
         }
     }
     
@@ -129,11 +127,13 @@ extension ViewController: TabDelegate {
 extension ViewController: TabContentDelegate {
     func tabContent(_ tabContent: TabContent, last index: Int) {
         if (index == 0) {
+            shopCartView.isHidden = false
             shopCartView.snp.updateConstraints { (make) in
                 make.height.equalTo(56 + 30)
             }
             tabContent.reloadData()
         } else {
+            shopCartView.isHidden = true
             shopCartView.snp.updateConstraints { (make) in
                 make.height.equalTo(0)
             }

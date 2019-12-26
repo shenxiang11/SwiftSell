@@ -35,9 +35,9 @@ class HeaderView: UIView {
     
     private var descriptionLabel: UILabel!
         
-    init(frame: CGRect, parentController: UIViewController) {
+    init(parentController: UIViewController) {
         self.parentController = parentController
-        super.init(frame: frame)
+        super.init(frame: .zero)
     }
     
     required init?(coder: NSCoder) {
@@ -82,7 +82,7 @@ extension HeaderView {
         mainImageView.kf.setImage(with: URL(string: avatar), options: [.processor(round)])
         mainImageView.snp.makeConstraints { (make) in
             make.left.equalTo(24)
-            make.top.equalTo(24 + 44)
+            make.top.equalTo(24 + safeAreaLayoutGuide.layoutFrame.origin.y)
             make.width.height.equalTo(64)
         }
     }

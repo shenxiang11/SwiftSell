@@ -12,14 +12,14 @@ class ShopCartView: UIView {
     
     private lazy var cartView: UIView = {[weak self] in
         let v = UIView()
-        v.backgroundColor = UIColor(r: 7, g: 17, b: 225)
+        v.backgroundColor = UIColor(r: 7, g: 17, b: 27)
         v.layer.cornerRadius = 25
         v.clipsToBounds = true
         return v
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init() {
+        super.init(frame: .zero)
         self.backgroundColor = UIColor(r: 7, g: 17, b: 27)
         setupUI()
     }
