@@ -74,13 +74,14 @@ extension GoodsViewController {
 
 extension GoodsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         if (tableView.isEqual(typeTab)) {
             goodsTable.scrollToRow(at: IndexPath(item: 0, section: indexPath.item), at: .top, animated: true)
+        } else {
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         guard let scrollView = scrollView as? UITableView, goodsTable.isEqual(scrollView) else {
             return
         }
