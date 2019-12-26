@@ -12,40 +12,35 @@ protocol TabContentDelegate: class {
     func tabContent(_ tabContent: TabContent, sourceIndex: Int, targetIndex: Int, progress: CGFloat)
 }
 
-class TabContent: UIView {
+class TabContent: UICollectionView {
     static let CONTENT_ID = "ContentID"
     
     private var childVCs: [UIViewController] = []
     private var parentVC: UIViewController
-    weak var delegate: TabContentDelegate?
+    weak var tabContentDelegate: TabContentDelegate?
     
     private var progress: CGFloat = 0
     private var sourceIndex = 0
     private var targetIndex = 0
     private var startOffsetX: CGFloat = 0
     
-    lazy var collectionView: UICollectionView = {[weak self] in
+    init(childVCs: [UIViewController], parentVC: UIViewController) {
+        self.childVCs = childVCs
+        self.parentVC = parentVC
+        
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 0
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.scrollDirection = .horizontal
+        super.init(frame: .zero, collectionViewLayout: flowLayout)
         
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.bounces = false
-        collectionView.isPagingEnabled = true
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: TabContent.CONTENT_ID)
-    
-        return collectionView
-    }()
-    
-    init(childVCs: [UIViewController], parentVC: UIViewController) {
-        self.childVCs = childVCs
-        self.parentVC = parentVC
-        super.init(frame: .zero)
+        self.delegate = self
+        self.dataSource = self
+        self.bounces = false
+        self.isPagingEnabled = true
+        self.showsHorizontalScrollIndicator = false
+        self.showsVerticalScrollIndicator = false
+        self.register(UICollectionViewCell.self, forCellWithReuseIdentifier: TabContent.CONTENT_ID)
     }
     
     override func didMoveToSuperview() {
@@ -60,12 +55,6 @@ class TabContent: UIView {
     private func setupUI() {
         for childVC in childVCs {
             parentVC.addChild(childVC)
-        }
-        
-        self.backgroundColor = UIColor.gray
-        self.addSubview(collectionView)
-        collectionView.snp.makeConstraints { (make) in
-            make.height.width.equalToSuperview()
         }
     }
 }
@@ -102,14 +91,14 @@ extension TabContent: UICollectionViewDelegate {
                 sourceIndex = childVCs.count - 1
             }
         }
-        delegate?.tabContent(self, sourceIndex: sourceIndex, targetIndex: targetIndex, progress: progress)
+        tabContentDelegate?.tabContent(self, sourceIndex: sourceIndex, targetIndex: targetIndex, progress: progress)
     }
 }
 
 extension TabContent {
     func scrollTo(index: Int) {
         let offset = CGPoint(x: CGFloat(index) * bounds.width, y: 0)
-        collectionView.setContentOffset(offset, animated: true)
+        self.setContentOffset(offset, animated: true)
     }
 }
 

@@ -67,7 +67,7 @@ extension ViewController {
     
     private func setupTabContent() {
         view.addSubview(tabContent)
-        tabContent.delegate = self
+        tabContent.tabContentDelegate = self
         tabContent.snp.makeConstraints { (make) in
             make.top.equalTo(tab.snp.bottom)
             make.bottom.equalTo(shopCartView.snp.top)
