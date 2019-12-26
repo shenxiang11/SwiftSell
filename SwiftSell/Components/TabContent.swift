@@ -10,6 +10,7 @@ import UIKit
 
 protocol TabContentDelegate: class {
     func tabContent(_ tabContent: TabContent, sourceIndex: Int, targetIndex: Int, progress: CGFloat)
+    func tabContent(_ tabContent: TabContent, last index: Int)
 }
 
 class TabContent: UICollectionView {
@@ -23,6 +24,7 @@ class TabContent: UICollectionView {
     private var sourceIndex = 0
     private var targetIndex = 0
     private var startOffsetX: CGFloat = 0
+    private var beginOffsetX: CGFloat = 0 // 移动中不改变，移动结束才改变
     
     init(childVCs: [UIViewController], parentVC: UIViewController) {
         self.childVCs = childVCs
@@ -61,7 +63,9 @@ class TabContent: UICollectionView {
 
 extension TabContent: UICollectionViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        print(#function)
         startOffsetX = scrollView.contentOffset.x
+        beginOffsetX = scrollView.contentOffset.x
     }
         
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -92,6 +96,25 @@ extension TabContent: UICollectionViewDelegate {
             }
         }
         tabContentDelegate?.tabContent(self, sourceIndex: sourceIndex, targetIndex: targetIndex, progress: progress)
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        print(#function)
+        let currentOffsetX = scrollView.contentOffset.x
+        print(currentOffsetX, beginOffsetX)
+        if (beginOffsetX != currentOffsetX) {
+            tabContentDelegate?.tabContent(self, last: targetIndex)
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        print(#function)
+        let currentOffsetX = scrollView.contentOffset.x
+        print(currentOffsetX, beginOffsetX)
+        if (beginOffsetX != currentOffsetX) {
+            tabContentDelegate?.tabContent(self, last: targetIndex)
+        }
+        beginOffsetX = currentOffsetX
     }
 }
 

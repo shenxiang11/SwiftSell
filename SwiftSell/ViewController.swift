@@ -127,14 +127,21 @@ extension ViewController: TabDelegate {
 }
 
 extension ViewController: TabContentDelegate {
+    func tabContent(_ tabContent: TabContent, last index: Int) {
+        if (index == 0) {
+            shopCartView.snp.updateConstraints { (make) in
+                make.height.equalTo(56 + 30)
+            }
+            tabContent.reloadData()
+        } else {
+            shopCartView.snp.updateConstraints { (make) in
+                make.height.equalTo(0)
+            }
+            tabContent.reloadData()
+        }
+    }
+    
     func tabContent(_ tabContent: TabContent, sourceIndex: Int, targetIndex: Int, progress: CGFloat) {
         tab.setActive(sourceIndex: sourceIndex, targetIndex: targetIndex, progress: progress)
-        
-        shopCartView.snp.remakeConstraints { (make) in
-            make.bottom.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalTo(0)
-        }
-        tabContent.reloadData()
     }
 }
