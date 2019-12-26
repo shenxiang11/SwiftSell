@@ -27,7 +27,7 @@ class NetworkManager {
                 if (json["errno"] == 0) {
                     finishedCallback(json["data"])
                 } else {
-                    debugPrint(json)
+//                    debugPrint(json)
                 }
             case .failure(let error):
                 debugPrint(error)

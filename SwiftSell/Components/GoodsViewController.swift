@@ -16,7 +16,6 @@ class GoodsViewController: UIViewController {
     
     private var goodsTypes: JSON = [] {
         didSet {
-            print(goodsTypes)
             typeTab.reloadData()
             goodsTable.reloadData()
             typeTab.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
@@ -38,7 +37,7 @@ class GoodsViewController: UIViewController {
         table.backgroundColor = UIColor(r: 255, g: 255, b: 255)
         table.delegate = self
         table.dataSource = self
-        table.register(UITableViewCell.self, forCellReuseIdentifier: GoodsViewController.TABLE_CELL_ID2)
+        table.register(GoodItem.self, forCellReuseIdentifier: GoodsViewController.TABLE_CELL_ID2)
         return table
     }()
     
@@ -75,6 +74,7 @@ extension GoodsViewController {
 
 extension GoodsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         if (tableView.isEqual(typeTab)) {
             goodsTable.scrollToRow(at: IndexPath(item: 0, section: indexPath.item), at: .top, animated: true)
         }
@@ -149,9 +149,9 @@ extension GoodsViewController: UITableViewDataSource {
             cell.type = goodsType["type"].intValue
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: GoodsViewController.TABLE_CELL_ID2, for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: GoodsViewController.TABLE_CELL_ID2, for: indexPath) as! GoodItem
             cell.tag = indexPath.section
-            cell.textLabel?.text = "\(indexPath)"
+            cell.food = goodsTypes[indexPath.section]["foods"][indexPath.item]
             return cell
         }
     }
@@ -160,7 +160,7 @@ extension GoodsViewController: UITableViewDataSource {
         if (tableView.isEqual(typeTab)) {
             return 56.0
         } else {
-            return 100.0
+            return 113.0
         }
     }
 }
