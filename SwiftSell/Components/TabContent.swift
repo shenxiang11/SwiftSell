@@ -110,6 +110,10 @@ extension TabContent: UICollectionViewDataSource {
         childVC.view.frame = cell.contentView.bounds
 
         cell.contentView.addSubview(childVC.view)
+        cell.contentView.backgroundColor = UIColor.yellow
+        childVC.view.snp.makeConstraints { (make) in
+            make.height.width.equalToSuperview()
+        }
         
         return cell
     }
