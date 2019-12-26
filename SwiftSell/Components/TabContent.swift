@@ -24,7 +24,7 @@ class TabContent: UICollectionView {
     private var sourceIndex = 0
     private var targetIndex = 0
     private var startOffsetX: CGFloat = 0
-    private var beginOffsetX: CGFloat = 0 // 移动中不改变，移动结束才改变
+    private var currentIndex = 0
     
     init(childVCs: [UIViewController], parentVC: UIViewController) {
         self.childVCs = childVCs
@@ -63,9 +63,7 @@ class TabContent: UICollectionView {
 
 extension TabContent: UICollectionViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        print(#function)
         startOffsetX = scrollView.contentOffset.x
-        beginOffsetX = scrollView.contentOffset.x
     }
         
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -98,23 +96,22 @@ extension TabContent: UICollectionViewDelegate {
         tabContentDelegate?.tabContent(self, sourceIndex: sourceIndex, targetIndex: targetIndex, progress: progress)
     }
     
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        print(#function)
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) { // 在代码触发的滚动后执行
         let currentOffsetX = scrollView.contentOffset.x
-        print(currentOffsetX, beginOffsetX)
-        if (beginOffsetX != currentOffsetX) {
+        let index = Int(currentOffsetX / scrollView.bounds.width)
+        if (index != currentIndex) {
             tabContentDelegate?.tabContent(self, last: targetIndex)
+            currentIndex = index
         }
     }
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        print(#function)
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let currentOffsetX = scrollView.contentOffset.x
-        print(currentOffsetX, beginOffsetX)
-        if (beginOffsetX != currentOffsetX) {
+        let index = Int(currentOffsetX / scrollView.bounds.width)
+        if (index != currentIndex) {
             tabContentDelegate?.tabContent(self, last: targetIndex)
+            currentIndex = index
         }
-        beginOffsetX = currentOffsetX
     }
 }
 
