@@ -49,7 +49,7 @@ extension ViewController {
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.top.equalToSuperview()
-            make.height.equalTo(136 + UIApplication.shared.keyWindow!.safeAreaInsets.top)
+            make.height.equalTo(136 + UIApplication.shared.windows[0].safeAreaInsets.top)
         }
     }
     
@@ -78,7 +78,7 @@ extension ViewController {
         shopCartView.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview()
             make.width.equalToSuperview()
-            make.height.equalTo(56 + UIApplication.shared.keyWindow!.safeAreaInsets.bottom)
+            make.height.equalTo(56 + UIApplication.shared.windows[0].safeAreaInsets.bottom)
         }
     }
     
