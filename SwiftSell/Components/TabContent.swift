@@ -49,7 +49,7 @@ class TabContent: UICollectionView {
         super.didMoveToSuperview()
         setupUI()
     }
-    
+        
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
