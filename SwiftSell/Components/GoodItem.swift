@@ -13,7 +13,6 @@ class GoodItem: UITableViewCell {
 
     var food: JSON = [] {
         didSet {
-            print(food)
             goodImageView.kf.setImage(with: URL(string: food["icon"].stringValue))
             goodNameLabel.text = food["name"].stringValue
             goodDescLabel.text = food["description"].stringValue
@@ -28,7 +27,7 @@ class GoodItem: UITableViewCell {
         }
     }
     
-    private lazy var goodImageView: UIImageView = {
+    lazy var goodImageView: UIImageView = {
         let v = UIImageView()
         v.contentMode = .scaleAspectFit
         return v

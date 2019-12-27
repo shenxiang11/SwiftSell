@@ -20,7 +20,6 @@ class GoodsDetailViewController: UIViewController {
     init(food: JSON) {
         self.food = food
         super.init(nibName: nil, bundle: nil)
-        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -29,6 +28,8 @@ class GoodsDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        mainImageView!.heroID = food["image"].stringValue
     }
     
     @objc func navigationBack() {

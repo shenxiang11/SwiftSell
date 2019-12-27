@@ -80,8 +80,10 @@ extension GoodsViewController: UITableViewDelegate {
             flag = true
             goodsTable.scrollToRow(at: IndexPath(item: 0, section: indexPath.item), at: .top, animated: true)
         } else {
+            let cell = tableView.cellForRow(at: indexPath) as! GoodItem
             let food = goodsTypes[indexPath.section]["foods"][indexPath.item]
             tableView.deselectRow(at: indexPath, animated: true)
+            cell.goodImageView.heroID = food["image"].stringValue
             navigationController?.pushViewController(GoodsDetailViewController(food: food), animated: true)
         }
     }
