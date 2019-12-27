@@ -72,6 +72,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		156423BA23B5D43800ACAC3A /* Animator */ = {
+			isa = PBXGroup;
+			children = (
+				152966FE23B0665300F595B3 /* PopupAnimator.swift */,
+			);
+			path = Animator;
+			sourceTree = "<group>";
+		};
 		15BF1DCB23AC7F00007A083B = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +106,7 @@
 				15BF1DDB23AC7F00007A083B /* ViewController.swift */,
 				15DFDFE823ACA1440086FA26 /* Util */,
 				15DFDFE523AC9E3F0086FA26 /* Model */,
+				156423BA23B5D43800ACAC3A /* Animator */,
 				15DFDFE223AC9B1E0086FA26 /* Components */,
 				15BF1DDD23AC7F00007A083B /* Main.storyboard */,
 				15BF1DE323AC7F05007A083B /* Assets.xcassets */,
@@ -114,7 +123,6 @@
 			children = (
 				15DFDFE923ACBFFD0086FA26 /* HeaderView.swift */,
 				6B6E46B523AF919900C64C2E /* PopoverViewController.swift */,
-				152966FE23B0665300F595B3 /* PopupAnimator.swift */,
 				1529670023B0968B00F595B3 /* ShopCartView.swift */,
 				1529670223B0984E00F595B3 /* Tab.swift */,
 				1529670423B0A20400F595B3 /* TabContent.swift */,
