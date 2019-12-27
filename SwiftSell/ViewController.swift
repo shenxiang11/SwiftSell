@@ -12,16 +12,19 @@ import SnapKit
 class ViewController: UIViewController {
 
     private lazy var shopCartView = ShopCartView()
+    private lazy var navgationVC = UINavigationController(rootViewController: mainVC)
     private lazy var mainVC = MainViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mainVC.delegate = self
-        self.addChild(mainVC)
+        navgationVC.isHeroEnabled = true
+        navgationVC.setNavigationBarHidden(true, animated: false)
+        self.addChild(navgationVC)
         setupShopCart()
-        self.view.insertSubview(mainVC.view, belowSubview: shopCartView)
-        mainVC.view.snp.makeConstraints { (make) in
+        self.view.insertSubview(navgationVC.view, belowSubview: shopCartView)
+        navgationVC.view.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
             make.bottom.equalTo(shopCartView.snp.top)
         }
@@ -50,10 +53,6 @@ extension ViewController: MainViewControllerDelegate {
             mainVC.view.snp.remakeConstraints { (make) in
                 make.top.left.right.bottom.equalToSuperview()
             }
-        }
-        // 临时解决方案-思考如何更新布局呢🤔
-        Timer.scheduledTimer(withTimeInterval: 0, repeats: false) { _ in
-            self.mainVC.tabContent.reloadData()
         }
     }
 }
