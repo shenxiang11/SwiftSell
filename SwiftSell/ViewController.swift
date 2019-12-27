@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         
         mainVC.delegate = self
         navgationVC.isHeroEnabled = true
+        navgationVC.interactivePopGestureRecognizer?.isEnabled = false
         navgationVC.setNavigationBarHidden(true, animated: false)
         self.addChild(navgationVC)
         setupShopCart()
