@@ -17,6 +17,8 @@ class GoodsDetailViewController: UIViewController {
         
     var mainImageView: UIImageView?
     
+    private var panGR: UIPanGestureRecognizer!
+
     init(food: JSON) {
         self.food = food
         super.init(nibName: nil, bundle: nil)
@@ -28,8 +30,30 @@ class GoodsDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        panGR = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gestureRecognizer:)))
+        self.view.addGestureRecognizer(panGR)
+        
         setupUI()
         mainImageView!.heroID = food["image"].stringValue
+    }
+    
+    @objc func handlePan(gestureRecognizer: UIPanGestureRecognizer) {
+        let translation = panGR.translation(in: nil)
+        let progress = translation.y / (view.bounds.height * 0.3)
+
+        switch gestureRecognizer.state {
+        case .began:
+            navigationController?.popViewController(animated: true)
+        case .changed:
+          Hero.shared.update(progress)
+        default:
+          if progress > 0.5 {
+            Hero.shared.finish()
+          } else {
+            Hero.shared.cancel()
+          }
+        }
     }
     
     @objc func navigationBack() {
