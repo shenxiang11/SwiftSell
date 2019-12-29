@@ -46,11 +46,11 @@ class Tab: UIView {
                 selectedItemButton = button
             }
             button.snp.makeConstraints { (make) in
+                make.width.equalToSuperview().dividedBy(3)
                 if index == 0 {
                     make.left.equalToSuperview()
                 } else {
                     make.left.equalTo(lastView!.snp.right)
-                    make.width.equalTo(lastView!)
                 }
                 make.top.bottom.equalToSuperview()
                 if index == items.count - 1 {

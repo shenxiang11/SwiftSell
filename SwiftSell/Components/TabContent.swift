@@ -125,7 +125,7 @@ extension TabContent {
 extension TabContent: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TabContent.CONTENT_ID, for: indexPath)
-                
+        
         let childVC = childVCs[(indexPath as NSIndexPath).item]
         childVC.view.frame = cell.contentView.bounds
 

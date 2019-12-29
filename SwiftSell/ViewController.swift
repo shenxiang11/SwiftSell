@@ -37,6 +37,7 @@ class ViewController: UIViewController {
             make.height.equalTo(56 + UIApplication.shared.windows[0].safeAreaInsets.bottom)
             make.bottom.equalToSuperview()
             make.width.equalToSuperview()
+            make.centerX.equalToSuperview()
         }
     }
 }
@@ -45,13 +46,13 @@ extension ViewController: MainViewControllerDelegate {
     func mainViewTabChanged(index: Int) {
         if (index == 0) {
             shopCartView.isHidden = false
-            mainVC.view.snp.remakeConstraints { (make) in
+            navgationVC.view.snp.remakeConstraints { (make) in
                 make.top.left.right.equalToSuperview()
                 make.bottom.equalTo(shopCartView.snp.top)
             }
         } else {
             shopCartView.isHidden = true
-            mainVC.view.snp.remakeConstraints { (make) in
+            navgationVC.view.snp.remakeConstraints { (make) in
                 make.top.left.right.bottom.equalToSuperview()
             }
         }

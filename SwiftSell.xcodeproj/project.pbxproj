@@ -14,7 +14,6 @@
 		1529670523B0A20400F595B3 /* TabContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1529670423B0A20400F595B3 /* TabContent.swift */; };
 		156423A423B2FA1300ACAC3A /* TypeTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156423A323B2FA1300ACAC3A /* TypeTabItem.swift */; };
 		156423A823B365CC00ACAC3A /* GoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156423A723B365CC00ACAC3A /* GoodItem.swift */; };
-		156423AE23B5B08200ACAC3A /* sell.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 156423AD23B5B08200ACAC3A /* sell.ttf */; };
 		156423B023B5B0B300ACAC3A /* GoodsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156423AF23B5B0B300ACAC3A /* GoodsDetailViewController.swift */; };
 		156423C023B5F05000ACAC3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156423BF23B5F05000ACAC3A /* ViewController.swift */; };
 		15BF1DD823AC7F00007A083B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF1DD723AC7F00007A083B /* AppDelegate.swift */; };
@@ -29,6 +28,7 @@
 		15DFDFEA23ACBFFD0086FA26 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DFDFE923ACBFFD0086FA26 /* HeaderView.swift */; };
 		15DFDFEC23ACFAF30086FA26 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DFDFEB23ACFAF30086FA26 /* UIColorExtension.swift */; };
 		39A1FFF7284343EEC3A2B0A2 /* Pods_SwiftSell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABDEC17954D7228EF718B03 /* Pods_SwiftSell.framework */; };
+		6B5D943323B63BFD003C0E39 /* sell.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B5D943223B63BFC003C0E39 /* sell.ttf */; };
 		6B6E46B623AF919900C64C2E /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6E46B523AF919900C64C2E /* PopoverViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +58,7 @@
 		15DFDFEB23ACFAF30086FA26 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		4318A2659CCB53BB92A94C76 /* Pods-SwiftSell.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftSell.debug.xcconfig"; path = "Target Support Files/Pods-SwiftSell/Pods-SwiftSell.debug.xcconfig"; sourceTree = "<group>"; };
 		4ABDEC17954D7228EF718B03 /* Pods_SwiftSell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftSell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B5D943223B63BFC003C0E39 /* sell.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sell.ttf; path = SwiftSell/sell.ttf; sourceTree = "<group>"; };
 		6B6E46B523AF919900C64C2E /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		D5432F8D77F6953E8DC5DF2F /* Pods-SwiftSell.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftSell.release.xcconfig"; path = "Target Support Files/Pods-SwiftSell/Pods-SwiftSell.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +86,7 @@
 		15BF1DCB23AC7F00007A083B = {
 			isa = PBXGroup;
 			children = (
+				6B5D943223B63BFC003C0E39 /* sell.ttf */,
 				15BF1DD623AC7F00007A083B /* SwiftSell */,
 				15BF1DD523AC7F00007A083B /* Products */,
 				8033DA0A290295E9ED84D187 /* Frameworks */,
@@ -231,7 +233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				156423AE23B5B08200ACAC3A /* sell.ttf in Resources */,
+				6B5D943323B63BFD003C0E39 /* sell.ttf in Resources */,
 				15BF1DE723AC7F05007A083B /* LaunchScreen.storyboard in Resources */,
 				15BF1DE423AC7F05007A083B /* Assets.xcassets in Resources */,
 				15BF1DDF23AC7F00007A083B /* Main.storyboard in Resources */,

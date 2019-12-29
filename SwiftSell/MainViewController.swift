@@ -63,6 +63,8 @@ extension MainViewController {
             make.top.equalTo(headerView.snp.bottom)
             make.height.equalTo(36)
             make.width.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.left.right.equalToSuperview()
         }
     }
     
@@ -74,6 +76,7 @@ extension MainViewController {
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
             make.bottom.equalTo(0)
+            make.left.right.equalToSuperview()
         }
     }
     
