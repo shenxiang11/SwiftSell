@@ -25,6 +25,7 @@ class GoodsDetailViewController: UIViewController {
         tableView.backgroundColor = UIColor(r: 243, g: 245, b: 247)
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: GoodsDetailViewController.COMMENT_CELL_ID)
+        tableView.tableFooterView = UIView() // 可以去掉多余的分割线
         tableView.delegate = self
         tableView.dataSource = self
         return tableView
@@ -76,12 +77,14 @@ class GoodsDetailViewController: UIViewController {
 }
 
 extension GoodsDetailViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 extension GoodsDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return food["ratings"].isEmpty ? 1 : food["ratings"].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,6 +98,9 @@ extension GoodsDetailViewController {
     private func setupUI() {
         setupCommentsTabelView()
         setupMainProductView()
+        if (!food["info"].stringValue.isEmpty) {
+            setGoodsInfo()
+        }
     }
     
     private func setupMainProductView() {
@@ -179,6 +185,53 @@ extension GoodsDetailViewController {
             oldPriceLabel.snp.makeConstraints { (make) in
                 make.bottom.equalTo(currentPriceLabel.snp.bottom)
                 make.left.equalTo(currentPriceLabel.snp.right).offset(8)
+            }
+        }
+    }
+    
+    private func setGoodsInfo() {
+        let view = UIView()
+        view.backgroundColor = UIColor.white
+        
+        let titleLabel = UILabel()
+        titleLabel.text = "商品信息"
+        titleLabel.font = UIFont.systemFont(ofSize: 14)
+        
+        
+        let textLabel = UILabel()
+        let paraph = NSMutableParagraphStyle()
+        paraph.lineSpacing = 10
+        let attributes = [NSAttributedString.Key.paragraphStyle: paraph]
+        textLabel.attributedText = NSAttributedString(string: food["info"].stringValue, attributes: attributes)
+        textLabel.numberOfLines = .max
+        textLabel.font = UIFont.systemFont(ofSize: 12)
+        textLabel.textColor = UIColor(r: 102, g: 102, b: 102)
+        commentsTableView.addSubview(view)
+                
+        view.snp.makeConstraints { (make) in
+            make.top.equalTo(mainProductView.snp.bottom).offset(18)
+            make.height.equalTo(128)
+            make.width.equalToSuperview()
+        }
+        
+        view.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { (make) in
+            make.top.left.equalTo(18)
+        }
+        
+        view.addSubview(textLabel)
+        textLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(-18)
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().inset(26)
+        }
+        DispatchQueue.main.async {
+            self.commentsTableView.contentInset = UIEdgeInsets(top: self.commentsTableView.contentInset.top + 128 + 18, left: 0, bottom: 0, right: 0)
+            view.snp.updateConstraints { (make) in
+                make.height.equalTo(65 + textLabel.bounds.height)
+            }
+            self.mainProductView.snp.updateConstraints { (make) in
+                make.bottom.equalToSuperview().offset(-18-128-18)
             }
         }
     }
