@@ -16,11 +16,25 @@ class GoodsDetailViewController: UIViewController {
     private let food: JSON
         
     var mainImageView: UIImageView?
+    private lazy var mainProductView = UIView()
+    
+    static let COMMENT_CELL_ID = "COMMENT_CELL_ID"
+    
+    private lazy var commentsTableView: UITableView = {[weak self] in
+        let tableView = UITableView()
+        tableView.backgroundColor = UIColor(r: 243, g: 245, b: 247)
+
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: GoodsDetailViewController.COMMENT_CELL_ID)
+        tableView.delegate = self
+        tableView.dataSource = self
+        return tableView
+    }()
     
     private var panGR: UIPanGestureRecognizer!
 
     init(food: JSON) {
         self.food = food
+        print(food)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -40,7 +54,7 @@ class GoodsDetailViewController: UIViewController {
     
     @objc func handlePan(gestureRecognizer: UIPanGestureRecognizer) {
         let translation = panGR.translation(in: nil)
-        let progress = translation.y / (view.bounds.height * 0.3)
+        let progress = translation.x / (view.bounds.width * 0.3)
 
         switch gestureRecognizer.state {
         case .began:
@@ -61,17 +75,46 @@ class GoodsDetailViewController: UIViewController {
     }
 }
 
+extension GoodsDetailViewController: UITableViewDelegate {
+    
+}
+
+extension GoodsDetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 100
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: GoodsDetailViewController.COMMENT_CELL_ID, for: indexPath)
+        cell.textLabel?.text = "\(indexPath.item)"
+        return cell
+    }
+}
+
 extension GoodsDetailViewController {
     private func setupUI() {
-        self.view.backgroundColor = UIColor.white
+        setupCommentsTabelView()
+        setupMainProductView()
+    }
+    
+    private func setupMainProductView() {
+        commentsTableView.addSubview(mainProductView)
+        mainProductView.backgroundColor = UIColor.white
+        mainProductView.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview().offset(-18)
+            make.height.equalTo(mainProductView.snp.width).offset(110)
+            make.width.equalToSuperview()
+        }
+        commentsTableView.contentInset = UIEdgeInsets(top: (UIScreen.main.bounds.width + 110 - 18 - 8), left: 0, bottom: 0, right: 0)
         setupMainImage()
+        setupDescs()
     }
     
     private func setupMainImage() {
         mainImageView = UIImageView()
         mainImageView!.contentMode = .scaleAspectFill
         mainImageView!.kf.setImage(with: URL(string: food["image"].stringValue))
-        self.view.addSubview(mainImageView!)
+        mainProductView.addSubview(mainImageView!)
         
         mainImageView!.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
@@ -83,7 +126,7 @@ extension GoodsDetailViewController {
         iconBack.textColor = UIColor.white
         iconBack.text = "\u{e900}"
         iconBack.textAlignment = .center
-        self.view.addSubview(iconBack)
+        mainProductView.addSubview(iconBack)
         iconBack.snp.makeConstraints { (make) in
             make.top.equalTo(10 + UIApplication.shared.windows[0].safeAreaInsets.top)
             make.width.height.equalTo(40)
@@ -91,5 +134,60 @@ extension GoodsDetailViewController {
         let ges = UITapGestureRecognizer(target: self, action: #selector(navigationBack))
         iconBack.isUserInteractionEnabled = true
         iconBack.addGestureRecognizer(ges)
+    }
+    
+    private func setupDescs() {
+        let productNameLabel = UILabel()
+        productNameLabel.text = food["name"].stringValue
+        productNameLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        mainProductView.addSubview(productNameLabel)
+        productNameLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(mainImageView!.snp.bottom).offset(18)
+            make.height.equalTo(14)
+            make.left.right.equalTo(18)
+        }
+        
+        let salesRatiingLabel = UILabel()
+        salesRatiingLabel.text = "月售\(food["sellCount"].intValue)份  好评率\(food["rating"].intValue)%"
+        salesRatiingLabel.font = UIFont.systemFont(ofSize: 12)
+        salesRatiingLabel.textColor = UIColor(r: 153, g: 153, b: 153)
+        mainProductView.addSubview(salesRatiingLabel)
+        salesRatiingLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(productNameLabel.snp.bottom).offset(14)
+            make.left.equalTo(productNameLabel)
+        }
+        
+        let currentPriceLabel = UILabel()
+        currentPriceLabel.font = UIFont.systemFont(ofSize: 14)
+        currentPriceLabel.textColor = UIColor(r: 240, g: 20, b: 20)
+        currentPriceLabel.text = "¥\(food["price"].stringValue)"
+        mainProductView.addSubview(currentPriceLabel)
+        currentPriceLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(salesRatiingLabel.snp.bottom).offset(14)
+            make.left.equalTo(salesRatiingLabel)
+        }
+        
+        if (!food["oldPrice"].stringValue.isEmpty) {
+            let oldPriceLabel = UILabel()
+            let ptext = "¥\(food["oldPrice"].stringValue)"
+            let oldPriceAttributedText = NSMutableAttributedString(string: ptext)
+            oldPriceAttributedText.addAttribute(.strikethroughStyle, value: NSNumber(value: NSUnderlineStyle.single.rawValue), range: NSMakeRange(0, ptext.count))
+            oldPriceLabel.font = UIFont.systemFont(ofSize: 12)
+            oldPriceLabel.textColor = UIColor(r: 153, g: 153, b: 153)
+            oldPriceLabel.attributedText = oldPriceAttributedText
+            mainProductView.addSubview(oldPriceLabel)
+            oldPriceLabel.snp.makeConstraints { (make) in
+                make.bottom.equalTo(currentPriceLabel.snp.bottom)
+                make.left.equalTo(currentPriceLabel.snp.right).offset(8)
+            }
+        }
+    }
+    
+    private func setupCommentsTabelView() {
+        self.view.addSubview(commentsTableView)
+        commentsTableView.snp.makeConstraints { (make) in
+            make.top.equalTo(0)
+            make.left.right.bottom.equalToSuperview()
+        }
     }
 }

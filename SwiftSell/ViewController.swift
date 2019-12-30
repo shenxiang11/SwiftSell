@@ -56,5 +56,8 @@ extension ViewController: MainViewControllerDelegate {
                 make.top.left.right.bottom.equalToSuperview()
             }
         }
+        DispatchQueue.main.async {
+            self.mainVC.tabContent.reloadData()
+        }
     }
 }
