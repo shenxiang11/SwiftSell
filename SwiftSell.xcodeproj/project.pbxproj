@@ -30,6 +30,7 @@
 		39A1FFF7284343EEC3A2B0A2 /* Pods_SwiftSell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABDEC17954D7228EF718B03 /* Pods_SwiftSell.framework */; };
 		6B5D943323B63BFD003C0E39 /* sell.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B5D943223B63BFC003C0E39 /* sell.ttf */; };
 		6B6E46B623AF919900C64C2E /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6E46B523AF919900C64C2E /* PopoverViewController.swift */; };
+		6BFA20FD23BADC7100CF4E08 /* GoodsDetailCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFA20FB23BADC7100CF4E08 /* GoodsDetailCommentCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		4ABDEC17954D7228EF718B03 /* Pods_SwiftSell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftSell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B5D943223B63BFC003C0E39 /* sell.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sell.ttf; path = SwiftSell/sell.ttf; sourceTree = "<group>"; };
 		6B6E46B523AF919900C64C2E /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		6BFA20FB23BADC7100CF4E08 /* GoodsDetailCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsDetailCommentCell.swift; sourceTree = "<group>"; };
 		D5432F8D77F6953E8DC5DF2F /* Pods-SwiftSell.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftSell.release.xcconfig"; path = "Target Support Files/Pods-SwiftSell/Pods-SwiftSell.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +137,7 @@
 				156423A323B2FA1300ACAC3A /* TypeTabItem.swift */,
 				156423A723B365CC00ACAC3A /* GoodItem.swift */,
 				156423AF23B5B0B300ACAC3A /* GoodsDetailViewController.swift */,
+				6BFA20FB23BADC7100CF4E08 /* GoodsDetailCommentCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1529670123B0968B00F595B3 /* ShopCartView.swift in Sources */,
+				6BFA20FD23BADC7100CF4E08 /* GoodsDetailCommentCell.swift in Sources */,
 				156423A823B365CC00ACAC3A /* GoodItem.swift in Sources */,
 				15DFDFE423AC9E3C0086FA26 /* Seller.swift in Sources */,
 				15BF1DDC23AC7F00007A083B /* MainViewController.swift in Sources */,

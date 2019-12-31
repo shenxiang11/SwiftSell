@@ -24,7 +24,7 @@ class GoodsDetailViewController: UIViewController {
         let tableView = UITableView()
         tableView.backgroundColor = UIColor(r: 243, g: 245, b: 247)
 
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: GoodsDetailViewController.COMMENT_CELL_ID)
+        tableView.register(GoodsDetailCommentCell.self, forCellReuseIdentifier: GoodsDetailViewController.COMMENT_CELL_ID)
         tableView.tableFooterView = UIView() // 可以去掉多余的分割线
         tableView.delegate = self
         tableView.dataSource = self
@@ -88,8 +88,8 @@ extension GoodsDetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: GoodsDetailViewController.COMMENT_CELL_ID, for: indexPath)
-        cell.textLabel?.text = "\(indexPath.item)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: GoodsDetailViewController.COMMENT_CELL_ID, for: indexPath) as! GoodsDetailCommentCell
+        cell.rating = food["ratings"][indexPath.item]
         return cell
     }
 }
